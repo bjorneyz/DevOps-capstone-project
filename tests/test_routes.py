@@ -140,7 +140,10 @@ class TestAccountService(TestCase):
             'Referrer-Policy': 'strict-origin-when-cross-origin'
         }
         for key, value in headers.items():
-            self.assertEqual(response.headers.get(key), value)
+            response_value = response.headers.get(key)
+            print(f"Expected: {key}: {value}, Received: {key}: {response_value}")
+            self.assertEqual(response_value, value)
+
     
     def test_cors_security(self):
         """It should return a CORS header"""
